@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="homeViewModel"
+            type="com.mamon.ecommerceapp.home.HomeViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".home.Home">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layoutDirection="ltr">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:layout_marginEnd="@dimen/_22sdp"
+                    android:layout_gravity="center"
+                    android:layoutDirection="ltr"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:id="@+id/btnMenu"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center|start"
+                        android:src="@drawable/ic_menu"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layoutDirection="ltr"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_23sdp"
+                            android:layout_height="@dimen/_23sdp"
+                            android:src="@drawable/logo_app"
+                            app:tint="@color/splash_bg_color" />
+
+                        <androidx.legacy.widget.Space
+                            android:layout_width="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="@color/splash_bg_color"
+                            android:text="Audiozic"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnSearch"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center|end"
+                        android:src="@drawable/ic_search"/>
+
+                </FrameLayout>
+
+
+            </FrameLayout>
+
+
+        <com.airbnb.epoxy.EpoxyRecyclerView
+            android:id="@+id/rvHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="@dimen/_12sdp"
+            tools:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_product"
+            android:layout_marginTop="5dp" />
+
+
+
+    </LinearLayout>
+
+
+</layout>

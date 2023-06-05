@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:layout_marginEnd="@dimen/_20sdp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@{title}"
+            android:textSize="@dimen/_12sdp"
+            tools:text="Choose Brand"
+            android:textColor="@color/textColor" />
+
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_8sdp"/>
+
+    </LinearLayout>
+</layout>

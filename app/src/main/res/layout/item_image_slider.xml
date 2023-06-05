@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="image"
+            type="Integer" />
+
+        <variable
+            name="onItemClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:onClick="@{onItemClick}"
+            setImage="@{image}"
+            android:rotation="-30"
+            android:translationY="-20dp"
+            android:translationX="-10dp"
+            android:layout_gravity="center"
+            tools:src="@drawable/product_1"/>
+
+
+    </FrameLayout>
+
+
+</layout>

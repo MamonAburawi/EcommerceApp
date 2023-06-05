@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"/>
+
+
+    <item
+        android:id="@+id/favorite"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_heart"/>
+
+
+
+    <item
+        android:id="@+id/space"
+        android:enabled="false"
+        android:title="" />
+
+    <item
+        android:id="@+id/newsPaper"
+        android:title="@string/news_paper"
+        android:icon="@drawable/ic_newspaper"/>
+
+
+    <item
+        android:id="@+id/account"
+        android:title="@string/account"
+        android:icon="@drawable/ic_user"/>
+
+
+
+</menu>

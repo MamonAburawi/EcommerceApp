@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.mamon.ecommerceapp.details.Details" />
+
+        <variable
+            name="product"
+            type="com.mamon.ecommerceapp.data.Product" />
+
+        <variable
+            name="extension"
+            type="com.mamon.ecommerceapp.utils.UIExtensionKt" />
+
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        tools:context=".details.Details">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_gravity="center"
+                    android:layoutDirection="ltr"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                       android:onClick="@{()-> fragment.navigateToPrevious()}"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center|start"
+                        android:src="@drawable/ic_back" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layoutDirection="ltr"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_23sdp"
+                            android:layout_height="@dimen/_23sdp"
+                            android:src="@drawable/logo_app"
+                            app:tint="@color/splash_bg_color" />
+
+                        <androidx.legacy.widget.Space
+                            android:layout_width="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="@color/splash_bg_color"
+                            android:text="Audiozic"/>
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:onClick="@{()-> fragment.navigateToCart()}"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center|end"
+                        android:src="@drawable/ic_shopping_bag"
+                        app:tint="@color/splash_bg_color" />
+
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="@drawable/bg_card_corner_one"
+                        android:layout_height="400dp"
+                        android:orientation="vertical">
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="8">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_gravity="center"
+                                android:translationX="@dimen/_30sdp"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:scaleX="1.1"
+                                    android:scaleY="1.1"
+                                    setPolygonalColor="@{product.polygonalColor}"
+                                    android:src="@drawable/ic_polygon"
+                                    android:translationX="@dimen/_minus8sdp"
+                                    android:translationY="@dimen/_minus20sdp" />
+
+
+                            </RelativeLayout>
+
+
+
+                            <androidx.viewpager2.widget.ViewPager2
+                                android:id="@+id/viewPager"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+
+
+
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:onClick="@{()-> fragment.slideToNextImage()}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|end"
+                                android:layout_marginEnd="15dp"
+                                android:src="@drawable/ic_next"
+                                app:fabSize="mini"
+                                app:tint="@color/splash_bg_color" />
+
+
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:onClick="@{()-> fragment.slideToPreviousImage()}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|start"
+                                android:layout_marginStart="15dp"
+                                android:src="@drawable/ic_left"
+                                app:fabSize="mini"
+                                app:tint="@color/splash_bg_color"
+                                />
+
+
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:translationY="-30dp"
+                            android:layout_gravity="center"
+                            android:gravity="center|top"
+                            android:orientation="vertical">
+
+                            <RatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:numStars="5"
+                                tools:rating="5"
+                                setRate="@{product.rating}"
+                                android:scaleX="1"
+                                android:scaleY="1"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:progressTint="#FFC420" />
+
+                            <TextView
+                                android:id="@+id/productName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textSize="@dimen/_11sdp"
+                                android:fontFamily="@font/poppins"
+                                android:text="@{product.title}"
+                                android:textColor="@color/black"
+                                tools:text="Beats Solo3 Headphones"/>
+
+                            <TextView
+                                android:id="@+id/productPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/poppins"
+                                setPrice="@{product.price}"
+                                android:textSize="@dimen/_11sdp"
+                                android:textColor="@color/splash_bg_color"
+                                tools:text="$250"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_corner_two"
+                        android:translationY="@dimen/_minus28sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="25dp"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginBottom="80dp"
+                            android:layout_marginTop="@dimen/_18sdp"
+                            android:orientation="vertical">
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_13sdp"
+                                android:text="@string/colors"/>
+
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_5sdp"/>
+
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/colorChip"
+                                android:layout_width="match_parent"
+                                app:chipSpacingHorizontal="@dimen/_minus8sdp"
+                                android:layout_height="@dimen/_35sdp"/>
+
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_10sdp"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_13sdp"
+                                android:text="@string/description"/>
+
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_5sdp"/>
+
+                            <TextView
+                                android:id="@+id/description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginEnd="15dp"
+                                android:text="@{product.description}"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_12sdp"
+                                tools:text="Input Type: 3.5mm stereo jack
+                                    \nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless Form Factor: On-Ear
+                                    \nConnections: Bluetooth, Wireless
+                                    \nSpeaker Configurations: Stereo" />
+
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+            </ScrollView>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layoutDirection="ltr"
+            android:layout_gravity="bottom"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:onClick="@{()-> fragment.addToCart()}"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/titan_white"
+                app:cardCornerRadius="@dimen/_30sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_to_cart"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.legacy.widget.Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:onClick="@{()-> fragment.buyNow()}"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                app:cardElevation="0dp"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@color/splash_bg_color"
+                app:cardCornerRadius="@dimen/_30sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buy_now"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center" />
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+
+
+</layout>
+
+
+
+
+
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto">-->
+
+<!--<data>-->
+
+<!--    <variable-->
+<!--        name="fragment"-->
+<!--        type="com.mamon.ecommerceapp.details.Details" />-->
+
+<!--    <variable-->
+<!--        name="product"-->
+<!--        type="com.mamon.ecommerceapp.data.Product" />-->
+
+
+<!--</data>-->
+
+<!--<FrameLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@null"-->
+<!--    tools:context=".details.Details">-->
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="90dp">-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginStart="25dp"-->
+<!--                android:layout_marginEnd="25dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layoutDirection="ltr"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/btnBack"-->
+<!--                    android:layout_width="23dp"-->
+<!--                    android:layout_height="23dp"-->
+<!--                    android:layout_gravity="center|start"-->
+<!--                    android:src="@drawable/ic_back" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layoutDirection="ltr"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:src="@drawable/logo_app"-->
+<!--                        app:tint="@color/splash_bg_color" />-->
+
+<!--                    <androidx.legacy.widget.Space-->
+<!--                        android:layout_width="10dp"-->
+<!--                        android:layout_height="wrap_content"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/poppins"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:textColor="@color/splash_bg_color"-->
+<!--                        android:text="Audiozic"/>-->
+
+
+<!--                </LinearLayout>-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/btnCart"-->
+<!--                    android:layout_width="23dp"-->
+<!--                    android:layout_height="23dp"-->
+<!--                    android:layout_gravity="center|end"-->
+<!--                    android:src="@drawable/ic_shopping_bag"-->
+<!--                    app:tint="@color/splash_bg_color" />-->
+
+<!--            </FrameLayout>-->
+
+<!--        </FrameLayout>-->
+
+<!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:background="@drawable/bg_card_corner_one"-->
+<!--                    android:layout_height="400dp"-->
+<!--                    android:orientation="vertical">-->
+
+
+<!--                    <FrameLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_weight="8">-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:translationX="50dp"-->
+<!--                            android:layout_height="match_parent">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:scaleX="1.1"-->
+<!--                                android:scaleY="1.1"-->
+<!--                                setPolygonalColor="@{product.polygonalColor}"-->
+<!--                                android:src="@drawable/ic_polygon"-->
+<!--                                android:translationX="-10dp"-->
+<!--                                android:translationY="-20dp" />-->
+
+<!--                        </RelativeLayout>-->
+
+
+<!--                        <androidx.viewpager2.widget.ViewPager2-->
+<!--                            android:id="@+id/viewPager"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"/>-->
+
+
+
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="200dp"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:rotation="-30"-->
+<!--                            android:translationY="-20dp"-->
+<!--                            android:translationX="-10dp"-->
+<!--                            setImage="@{product.icon}"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            tools:src="@drawable/product_1"/>-->
+
+
+<!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                            android:id="@+id/btnNextImg"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center|end"-->
+<!--                            android:layout_marginEnd="15dp"-->
+<!--                            android:src="@drawable/ic_next"-->
+<!--                            app:fabSize="mini"-->
+<!--                            app:tint="@color/splash_bg_color" />-->
+
+
+
+<!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                            android:id="@+id/btnPreviousImg"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center|start"-->
+<!--                            android:layout_marginStart="15dp"-->
+<!--                            android:src="@drawable/ic_left"-->
+<!--                            app:fabSize="mini"-->
+<!--                            app:tint="@color/splash_bg_color" />-->
+
+
+
+<!--                    </FrameLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_weight="2"-->
+<!--                        android:translationY="-30dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:gravity="center|top"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <RatingBar-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="5dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:numStars="5"-->
+<!--                            tools:rating="5"-->
+<!--                            setRate="@{product.rating}"-->
+<!--                            android:scaleX="1"-->
+<!--                            android:scaleY="1"-->
+<!--                            style="@style/Widget.AppCompat.RatingBar.Small"-->
+<!--                            android:progressTint="#FFC420" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/productName"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_marginStart="15dp"-->
+<!--                            android:layout_marginEnd="15dp"-->
+<!--                            android:fontFamily="@font/poppins"-->
+<!--                            android:text="@{product.title}"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            tools:text="Beats Solo3 Headphones"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/productPrice"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="15dp"-->
+<!--                            android:layout_marginEnd="15dp"-->
+<!--                            android:fontFamily="@font/poppins"-->
+<!--                            setPrice="@{product.price}"-->
+<!--                            android:textColor="@color/splash_bg_color"-->
+<!--                            tools:text="$250"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+
+
+
+
+
+<!--                <FrameLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/bg_card_corner_two"-->
+<!--                    android:translationY="-30dp"-->
+<!--                    android:orientation="vertical">-->
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginEnd="25dp"-->
+<!--                        android:layout_marginStart="25dp"-->
+<!--                        android:layout_marginBottom="80dp"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:orientation="vertical">-->
+
+
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_marginEnd="15dp"-->
+<!--                            android:fontFamily="@font/poppins"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:text="@string/colors"/>-->
+
+
+<!--                        <com.google.android.material.chip.ChipGroup-->
+<!--                            android:id="@+id/colorChip"-->
+
+<!--                            android:layout_width="match_parent"-->
+<!--                            app:chipSpacingHorizontal="-10dp"-->
+<!--                            android:layout_height="40dp"/>-->
+
+
+<!--                        <androidx.legacy.widget.Space-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="25dp"/>-->
+
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_marginEnd="15dp"-->
+<!--                            android:fontFamily="@font/poppins"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:text="@string/description"/>-->
+
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/description"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_marginEnd="15dp"-->
+<!--                            android:text="@{product.description}"-->
+<!--                            android:fontFamily="@font/poppins"-->
+<!--                            android:textColor="@color/textColor"-->
+<!--                            android:textSize="18sp"-->
+<!--                            tools:text="Input Type: 3.5mm stereo jack-->
+<!--                                    \nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless Form Factor: On-Ear-->
+<!--                                    \nConnections: Bluetooth, Wireless-->
+<!--                                    \nSpeaker Configurations: Stereo" />-->
+
+
+<!--                    </LinearLayout>-->
+
+<!--                </FrameLayout>-->
+
+
+
+
+<!--            </LinearLayout>-->
+
+
+
+<!--        </ScrollView>-->
+
+
+
+<!--    </LinearLayout>-->
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layoutDirection="ltr"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@null"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/btnAddToCart"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:cardElevation="0dp"-->
+<!--            app:cardBackgroundColor="@color/titan_white"-->
+<!--            app:cardCornerRadius="40dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/add_to_cart"-->
+<!--                android:fontFamily="@font/poppins"-->
+<!--                android:textSize="15sp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:layout_gravity="center" />-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+
+<!--        <androidx.legacy.widget.Space-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/btnBuyNow"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            app:cardElevation="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:cardBackgroundColor="@color/splash_bg_color"-->
+<!--            app:cardCornerRadius="40dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/buy_now"-->
+<!--                android:fontFamily="@font/poppins"-->
+<!--                android:textSize="15sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_gravity="center" />-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+
+<!--    </LinearLayout>-->
+
+
+
+
+<!--</FrameLayout>-->
+
+
+<!--</layout>-->

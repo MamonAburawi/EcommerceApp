@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Ecommerce App</string>
+    <string name="choose_brand">Choose Brand</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="news_paper">News paper</string>
+    <string name="account">Account</string>
+    <string name="colors">Colors</string>
+    <string name="description">Description</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="add_to_cart">Add to Cart</string>
+</resources>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="product"
+            type="com.mamon.ecommerceapp.data.Product" />
+
+        <variable
+            name="onItemLiked"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onItemClicked"
+            type="android.view.View.OnClickListener" />
+
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layoutDirection="ltr">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:onClick="@{onItemClicked}"
+            android:layout_width="@dimen/_122sdp"
+            android:layout_height="@dimen/_188sdp"
+            android:layout_gravity="center"
+            app:cardElevation="2dp"
+            android:shadowRadius="25"
+            app:cardCornerRadius="25dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layoutDirection="ltr">
+
+                <ImageView
+                    setPolygonalColor="@{product.polygonalColor}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleX="1.25"
+                    android:scaleY="1.25"
+                    android:src="@drawable/ic_polygon"
+                    android:translationX="@dimen/_12sdp"
+                    android:translationY="@dimen/_minus12sdp" />
+
+            </RelativeLayout>
+
+            <ImageView
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:rotation="-30"
+                    android:translationX="-14dp"
+                    android:translationY="-12dp"
+                    android:layoutDirection="ltr"
+                    android:layout_gravity="center"
+                    setImage="@{product.icons[0]}"
+                    tools:src="@drawable/product_1"/>
+
+
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkbox"
+                    android:onClick="@{onItemLiked}"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    tools:checked="false"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:checked="@{product.isLiked}"
+                    android:button="@drawable/sl_favorite"
+                    android:buttonTint="@android:color/holo_red_dark"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/productName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="@{product.title}"
+                        android:textColor="@color/black"
+                        tools:text="Beats Solo3"/>
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        setPrice="@{product.price}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/splash_bg_color"
+                        tools:text="$250" />
+
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:numStars="5"
+                        tools:rating="5"
+                        setRate="@{product.rating}"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:translationX="@dimen/_minus3sdp"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:progressTint="#FFC420" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+
+
+
+</layout>
