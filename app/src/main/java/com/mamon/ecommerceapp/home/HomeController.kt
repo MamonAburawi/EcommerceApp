@@ -5,6 +5,7 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.mamon.ecommerceapp.*
 import com.mamon.ecommerceapp.data.Brand
 import com.mamon.ecommerceapp.data.Product
+import com.mamon.ecommerceapp.utils.SpaceModel_
 
 
 class HomeController : TypedEpoxyController<List<Any>>() {
@@ -26,6 +27,11 @@ class HomeController : TypedEpoxyController<List<Any>>() {
 
      override fun buildModels(list: List<Any>?){
         createBrandModels()
+
+         add(SpaceModel_()
+             .id("space_id")
+             .height(140))
+
         createProductModels()
     }
 

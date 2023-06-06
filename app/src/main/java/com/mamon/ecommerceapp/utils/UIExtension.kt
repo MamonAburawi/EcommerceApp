@@ -1,7 +1,8 @@
-@file:Suppress("DEPRECATION", "IMPLICIT_NOTHING_TYPE_ARGUMENT_IN_RETURN_POSITION")
+@file:Suppress("DEPRECATION", "IMPLICIT_NOTHING_TYPE_ARGUMENT_IN_RETURN_POSITION","NonConstantResourceId")
 
 package com.mamon.ecommerceapp.utils
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Parcelable
@@ -13,6 +14,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.airbnb.epoxy.EpoxyAttribute
+import com.airbnb.epoxy.EpoxyHolder
+import com.airbnb.epoxy.EpoxyModelClass
+import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import com.mamon.ecommerceapp.R
@@ -87,6 +92,28 @@ fun View.setMargin(left: Int, top: Int, right: Int,bottom: Int){
     param.setMargins( left, top, right, bottom)
     layoutParams = param
 }
+
+
+
+@EpoxyModelClass(layout = R.layout.item_space_model)
+abstract class SpaceModel : EpoxyModelWithHolder<SpaceModel.Holder>() {
+
+    @EpoxyAttribute
+    var height: Int = 0
+
+    override fun bind(holder: Holder) {
+        holder.spaceView.layoutParams.height = height
+    }
+
+    inner class Holder : EpoxyHolder() {
+        lateinit var spaceView: View
+
+        override fun bindView(itemView: View) {
+            spaceView = itemView.findViewById(R.id.view_space)
+        }
+    }
+}
+
 
 
 fun View.hideNavBottom(){
